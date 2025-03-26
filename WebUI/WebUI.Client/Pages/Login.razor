@@ -1,0 +1,105 @@
+@page "/login"
+@using Application.Identity.DTOs
+@using WebUI.Client.Authentication
+@inject IAuthenticationService AuthService
+@inject NavigationManager NavManager
+
+<MudContainer MaxWidth="MaxWidth.Small" Class="pa-4">
+    <MudCard>
+        <MudCardHeader>
+            <MudText Typo="Typo.h5">Login</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin">
+                <DataAnnotationsValidator />
+                <MudTextField T="string" Label="Username" @bind-Value="loginModel.UserName" 
+                    Required="true" RequiredError="Username is required" />
+                <MudTextField T="string" Label="Password" @bind-Value="loginModel.Password" 
+                    Required="true" RequiredError="Password is required"
+                    InputType="@passwordInputType" Adornment="Adornment.End" 
+                    AdornmentIcon="@passwordIcon" OnAdornmentClick="TogglePasswordVisibility" />
+                <MudCheckBox T="bool" Label="Remember me?" @bind-Checked="loginModel.RememberMe" />
+                
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <MudAlert Severity="Severity.Error" Class="mt-2">@errorMessage</MudAlert>
+                }
+                
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" 
+                    Color="Color.Primary" Class="mt-3" FullWidth="true" Disabled="@isLoading">
+                    @if (isLoading)
+                    {
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                        <MudText Class="ms-2">Processing</MudText>
+                    }
+                    else
+                    {
+                        <MudText>Login</MudText>
+                    }
+                </MudButton>
+            </EditForm>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="@(() => NavManager.NavigateTo("/register"))">
+                Don't have an account? Register
+            </MudButton>
+            <MudSpacer />
+            <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="@(() => NavManager.NavigateTo("/forgotpassword"))">
+                Forgot Password?
+            </MudButton>
+        </MudCardActions>
+    </MudCard>
+</MudContainer>
+
+@code {
+    private LoginDto loginModel = new();
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+    private bool passwordVisible = false;
+    private InputType passwordInputType = InputType.Password;
+    private string passwordIcon = Icons.Material.Filled.VisibilityOff;
+
+    private void TogglePasswordVisibility()
+    {
+        if (passwordVisible)
+        {
+            passwordVisible = false;
+            passwordInputType = InputType.Password;
+            passwordIcon = Icons.Material.Filled.VisibilityOff;
+        }
+        else
+        {
+            passwordVisible = true;
+            passwordInputType = InputType.Text;
+            passwordIcon = Icons.Material.Filled.Visibility;
+        }
+    }
+
+    private async Task HandleLogin()
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+
+        try
+        {
+            var result = await AuthService.LoginAsync(loginModel);
+            
+            if (result.Success)
+            {
+                NavManager.NavigateTo("/");
+            }
+            else
+            {
+                errorMessage = result.Message;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Login failed: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+} 

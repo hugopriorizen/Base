@@ -1,46 +1,90 @@
-using Microsoft.AspNetCore.Builder;
-using WebUI.Components;
+using Application;
+using Infra;
+using Infra.Persistence;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.ResponseCompression;
 
+var builder = WebApplication.CreateBuilder(args);
 
-namespace WebUI
-{
-    public class Program
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddRazorPages();
+
+// Add Swagger for API documentation
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// Add application and infrastructure layers
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+// Add authentication
+builder
+    .Services.AddAuthentication(options =>
     {
-        public static async Task Main(string[] args)
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    })
+    .AddCookie(options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+        options.SlidingExpiration = true;
+        options.Events.OnRedirectToLogin = context =>
         {
-            var builder = WebApplication.CreateBuilder(args);
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            return Task.CompletedTask;
+        };
+        options.Events.OnRedirectToAccessDenied = context =>
+        {
+            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+            return Task.CompletedTask;
+        };
+    });
 
-            // Add services to the container.
-            builder
-                .Services.AddRazorComponents()
-                .AddInteractiveServerComponents()
-                .AddInteractiveWebAssemblyComponents();
+// Add authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
+    options.AddPolicy("RequireManagerRole", policy => policy.RequireRole("Manager"));
+});
 
-            var app = builder.Build();
+var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseWebAssemblyDebugging();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseStaticFiles();
-            app.UseAntiforgery();
-
-            app.MapRazorComponents<App>()
-                .AddInteractiveServerRenderMode()
-                .AddInteractiveWebAssemblyRenderMode()
-                .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
-
-            app.Run();
-        }
-    }
+// Initialize the database
+using (var scope = app.Services.CreateScope())
+{
+    await DatabaseInitializer.InitializeDatabaseAsync(app.Services);
 }
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseWebAssemblyDebugging();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+
+app.UseBlazorFrameworkFiles();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapRazorPages();
+app.MapControllers();
+app.MapFallbackToFile("index.html");
+
+app.Run();
