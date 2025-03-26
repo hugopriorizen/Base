@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Projetos\\Blazor\\Base\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B0DF3078-76BA-4FE0-9453-3617117EA653}|Presentation\\Presentation.csproj|c:\\projetos\\blazor\\base\\presentation\\presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{B0DF3078-76BA-4FE0-9453-3617117EA653}|Presentation\\Presentation.csproj|solutionrelative:presentation\\presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|c:\\projetos\\blazor\\base\\webui\\webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|solutionrelative:webui\\webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0DF3078-76BA-4FE0-9453-3617117EA653}|Presentation\\Presentation.csproj|c:\\projetos\\blazor\\base\\presentation\\component1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B0DF3078-76BA-4FE0-9453-3617117EA653}|Presentation\\Presentation.csproj|solutionrelative:presentation\\component1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|c:\\projetos\\blazor\\base\\webui\\webui\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|solutionrelative:webui\\webui\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|c:\\projetos\\blazor\\base\\webui\\webui\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|solutionrelative:webui\\webui\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|c:\\projetos\\blazor\\base\\webui\\webui\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5CA2E1C-3C55-2437-31AC-53A00F16D6F0}|WebUI\\WebUI\\WebUI.csproj|solutionrelative:webui\\webui\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 22,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,28 +106,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Presentation",
-              "DocumentMoniker": "C:\\Projetos\\Blazor\\Base\\Presentation\\Presentation.csproj",
-              "RelativeDocumentMoniker": "Presentation\\Presentation.csproj",
-              "ToolTip": "C:\\Projetos\\Blazor\\Base\\Presentation\\Presentation.csproj",
-              "RelativeToolTip": "Presentation\\Presentation.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-26T22:44:08.175Z",
+              "DocumentIndex": 2,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "WebUI\\WebUI\\Components\\Routes.razor",
+              "ToolTip": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Components\\Routes.razor",
+              "RelativeToolTip": "WebUI\\WebUI\\Components\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T23:08:17.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "WebUI\\WebUI\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Components\\_Imports.razor",
+              "RelativeToolTip": "WebUI\\WebUI\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-26T23:08:13.046Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Component1.razor",
-              "DocumentMoniker": "C:\\Projetos\\Blazor\\Base\\Presentation\\Component1.razor",
-              "RelativeDocumentMoniker": "Presentation\\Component1.razor",
-              "ToolTip": "C:\\Projetos\\Blazor\\Base\\Presentation\\Component1.razor",
-              "RelativeToolTip": "Presentation\\Component1.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Components\\App.razor",
+              "RelativeDocumentMoniker": "WebUI\\WebUI\\Components\\App.razor",
+              "ToolTip": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Components\\App.razor",
+              "RelativeToolTip": "WebUI\\WebUI\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-26T22:43:35.632Z",
+              "WhenOpened": "2025-03-26T23:07:53.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Program.cs",
+              "RelativeDocumentMoniker": "WebUI\\WebUI\\Program.cs",
+              "ToolTip": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI\\Program.cs",
+              "RelativeToolTip": "WebUI\\WebUI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T23:07:31.617Z",
               "EditorCaption": ""
             }
           ]

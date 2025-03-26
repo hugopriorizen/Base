@@ -1,16 +1,18 @@
-using WebUI.Client.Pages;
+using Microsoft.AspNetCore.Builder;
 using WebUI.Components;
+
 
 namespace WebUI
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddRazorComponents()
+            builder
+                .Services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
 

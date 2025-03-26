@@ -1671,11 +1671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI.Client\\WebUI.Client.csproj",
+      "projectUniqueName": "c:\\Projetos\\Blazor\\Base\\WebUI\\WebUI.Client\\WebUI.Client.csproj",
       "projectName": "WebUI.Client",
-      "projectPath": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI.Client\\WebUI.Client.csproj",
+      "projectPath": "c:\\Projetos\\Blazor\\Base\\WebUI\\WebUI.Client\\WebUI.Client.csproj",
       "packagesPath": "C:\\Users\\PICHAU\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\Blazor\\Base\\WebUI\\WebUI.Client\\obj\\",
+      "outputPath": "c:\\Projetos\\Blazor\\Base\\WebUI\\WebUI.Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
